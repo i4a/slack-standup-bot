@@ -1,3 +1,6 @@
+require 'standupbot/client'
+require 'standupbot/slack/channel'
+
 namespace :slack_standup_bot do
   desc 'Starts Standup for a given CHANNEL_ID or CHANNEL_NAME'
   task start: :environment do
