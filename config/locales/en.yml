@@ -32,6 +32,9 @@ en:
 
     quit: Quiting Standup
     resume: That concludes our standup. For a recap visit %{url}
+    resume_time_great: ":partyparrot: Yes! Only *%{minutes} minutes* to finish the standup today. Well done!"
+    resume_time_to_improve: ":sleeping: Today we took *%{minutes} minutes* to finish the standup. We can do better people!"
+    resume_time_winter_is_coming: ":booom: Today we needed *%{minutes} minutes* to finish the standup. Yes. True shit. :omg-panda: Next time we are doing this standup meeting actually STANDING UP, so we understand the concept. I'm watching you madafakas :darth_vader:"
 
   standup:
     question_1_monday: "1. What did you do yesterday?"

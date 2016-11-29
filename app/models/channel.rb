@@ -30,6 +30,18 @@ class Channel < ActiveRecord::Base
 
   end
 
+  STANDUP_COMPLETION_TIMES_PER_USER = {
+    great: 3,
+    to_improve: 5,
+    winter_is_coming: 12
+  }
+
+  STANDUP_COMPLETION_TIMES_PER_USER.each do |name, minutes|
+    define_method "#{name}_finish_up_time_in_minutes" do
+      available_users.count * minutes
+    end
+  end
+
   # Returns only the users that are able to do the standup.
   #
   # @return [ActiveRecord::AssociationRelation<Users>]
@@ -90,4 +102,3 @@ class Channel < ActiveRecord::Base
   end
 
 end
-

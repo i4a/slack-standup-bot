@@ -78,10 +78,20 @@ class IncomingMessage
 
   def complete_standup
     url = Rails.application.routes.url_helpers.channel_standups_url(channel_id: channel.id, host: settings.web_url)
+    minutes_elapsed = Standup.time_elapsed_in_todays_standup / 60
 
     StandupMailer.today_report(channel.id).deliver_later
 
     channel.message(I18n.t('incoming_message.resume', url: url))
+
+    case
+    when minutes_elapsed < channel.great_finish_up_time_in_minutes
+      channel.message(I18n.t('incoming_message.resume_time_great', minutes: minutes_elapsed))
+    when minutes_elapsed < channel.winter_is_coming_finish_up_time_in_minutes
+      channel.message(I18n.t('incoming_message.resume_time_to_improve', minutes: minutes_elapsed))
+    else
+      channel.message(I18n.t('incoming_message.resume_time_winter_is_coming', minutes: minutes_elapsed))
+    end
 
     @status = STANDUP_STATUS[:done]
   end

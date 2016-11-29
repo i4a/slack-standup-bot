@@ -32,6 +32,9 @@ es:
 
     quit: Saliendo del Standup
     resume: Standup finalizado. Olé! Si quieres ver el resumen, visita %{url}
+    resume_time_great: ":partyparrot: ¡Sí! ¡Hoy hemos conseguido acabar en sólo *%{minutes} minutos*! ¡Buen trabajo! ¡Ahora a reventar la mañana!"
+    resume_time_to_improve: ":sleeping: Hoy hemos necesitado *%{minutes} minutos* para acabar el standup. ¿Sueño o resaca? ¡Podemos hacerlo mejor equipo!"
+    resume_time_winter_is_coming: ":booom: Hoy hemos necesitado *%{minutes} minutes* para acabar el standup. Sip. De verdad. :omg-panda: El próximo standup lo vamos a hacer DE PIE, a ver si así entendemos el concepto ... el lemur os vigila madafakas :darth_vader:"
 
   standup:
     question_1_monday: "1. ¿Qué hiciste ayer?"

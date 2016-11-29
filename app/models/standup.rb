@@ -98,6 +98,19 @@ class Standup < ActiveRecord::Base
       standup
     end
 
+    # in seconds
+    def time_elapsed_in_todays_standup
+      today_ended_at - today_started_at
+    end
+
+    def today_started_at
+      today.first.try(:created_at)
+    end
+
+    def today_ended_at
+      today.last.try(:updated_at)
+    end
+
   end
 
   # @return [Boolean]
