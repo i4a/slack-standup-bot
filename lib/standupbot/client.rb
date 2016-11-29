@@ -31,16 +31,16 @@ module Standupbot
 
       realtime.on :hello do
         if channel.complete?
-          channel.message('Today\'s standup is already completed.')
+          channel.message(I18n.t('incoming_message.standup_completed'))
           realtime.stop!
 
         elsif channel.today_standups.any?
-          channel.message('Standup is up again!!! Here you have the previous status of the standup:')
+          channel.message(I18n.t('incoming_message.standup_back_online'))
 
           IncomingMessage::Status.new({}, channel.today_standups.first).execute
 
         else
-          channel.message('Welcome to standup! Type "-Start" to get started.')
+          channel.message(I18n.t('incoming_message.standup_welcome'))
         end
       end
 
