@@ -42,6 +42,15 @@ es:
     current_question_1_not_monday: "<@%{user}> 1. ¿Qué hiciste el viernes?"
     current_question_2: "<@%{user}> 2. ¿En qué vas a trabajar hoy?"
     current_question_3: "<@%{user}> 3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
+    status:
+      idle: "<@%{user}> esperado en la cola del standup."
+      active: "<@%{user}> tiene que responder aún si quiere participar en el standup."
+      answering_yesterday: "<@%{user}> está respondiendo qué hizo ayer."
+      answering_today: "<@%{user}> está respondiendo qué quiere hacer hoy."
+      answering_conflicts: "<@%{user}> está respondiendo si tiene bloqueos o necesita algo de alguien."
+      on_vacation: "<@%{user}> está de vacaciones."
+      not_available: "<@%{user}> hoy no está disponible."
+      done: "<@%{user}> ya ha respondido el standup de hoy."
 
   settings:
     index:
