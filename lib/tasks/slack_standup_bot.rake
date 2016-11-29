@@ -1,6 +1,6 @@
 namespace :slack_standup_bot do
   desc 'Starts Standup for a given CHANNEL_ID or CHANNEL_NAME'
-  task start: :env do
+  task start: :environment do
     abort('Please provide either a CHANNEL_ID or a CHANNEL_NAME to start the Standup into') unless ENV['CHANNEL_ID'] || ENV['CHANNEL_NAME']
 
     channel_id = ENV['CHANNEL_ID'] || Standupbot::Slack::Channel.by_name(ENV['CHANNEL_NAME']).try{ |ch| ch['id'] }
