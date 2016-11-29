@@ -112,21 +112,21 @@ class Standup < ActiveRecord::Base
 
   def question_for_number(number)
     case number
-    when 1 then Time.now.wday == 4 ? "1. What did you do on Friday?" : "1. What did you do yesterday?"
-    when 2 then "2. What are you working on today?"
-    when 3 then "3. Is there anything standing in your way?"
+    when 1 then Time.now.wday == 1 ? I18n.t('standup.question_1_monday') : I18n.t('standup.question_1_not_monday')
+    when 2 then I18n.t('standup.question_2')
+    when 3 then I18n.t('standup.question_3')
     end
   end
 
   def current_question
+    user = self.user.slack_id
+
     if self.yesterday.nil?
-      Time.now.wday == 1 ? "<@#{self.user.slack_id}> 1. What did you do on Friday?" : "<@#{self.user.slack_id}> 1. What did you do yesterday?"
-
+      Time.now.wday == 1 ? I18n.t('standup.current_question_1_monday', user: user) : I18n.t('standup.current_question_1_not_monday', user: user)
     elsif self.today.nil?
-      "<@#{self.user.slack_id}> 2. What are you working on today?"
-
+      I18n.t('standup.current_question_2', user: user)
     elsif self.conflicts.nil?
-      "<@#{self.user.slack_id}> 3. Is there anything standing in your way?"
+      I18n.t('standup.current_question_3', user: user)
     end
   end
 

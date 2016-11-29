@@ -33,6 +33,16 @@ es:
     quit: Saliendo del Standup
     resume: Standup finalizado. Olé! Si quieres ver el resumen, visita %{url}
 
+  standup:
+    question_1_monday: "1. ¿Qué hiciste ayer?"
+    question_1_not_monday: "1. ¿Qué hiciste el viernes?"
+    question_2: "2. ¿En qué vas a trabajar hoy?"
+    question_3: "3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
+    current_question_1_monday: "<@%{user}> 1. ¿Qué hiciste ayer?"
+    current_question_1_not_monday: "<@%{user}> 1. ¿Qué hiciste el viernes?"
+    current_question_2: "<@%{user}> 2. ¿En qué vas a trabajar hoy?"
+    current_question_3: "<@%{user}> 3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
+
   settings:
     index:
       success: Ajustes guardados correctamente.

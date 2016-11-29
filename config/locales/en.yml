@@ -33,6 +33,17 @@ en:
     quit: Quiting Standup
     resume: That concludes our standup. For a recap visit %{url}
 
+  standup:
+    question_1_monday: "1. What did you do yesterday?"
+    question_1_not_monday: "1. What did you do on Friday?"
+    question_2: "2. What are you working on today?"
+    question_3: "3. Is there anything standing in your way?"
+    current_question_1_monday: "<@%{user}> 1. What did you do yesterday?"
+    current_question_1_not_monday: "<@%{user}> 1. What did you do on Friday?"
+    current_question_2: "<@%{user}> 2. What are you working on today?"
+    current_question_3: "<@%{user}> 3. Is there anything standing in your way?"
+
+
   settings:
     index:
       success: Your settings were saved correctly.
