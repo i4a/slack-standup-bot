@@ -60,9 +60,12 @@ module Standupbot
 
       # HOTFIX: Heroku sends a SIGTERM signal when shutting down a node, this is the only way
       #   I found to change the state of the channel in that edge case.
+      #   RAKE_CALL env var is used to prevent this behaviour from rake tasks
       at_exit do
-        channel.stop! if channel.active?
-        channel.message(I18n.t('incoming_message.bot_died')) unless channel.complete?
+        unless ENV['RAKE_CALL']
+          channel.stop! if channel.active?
+          channel.message(I18n.t('incoming_message.bot_died')) unless channel.complete?
+        end
       end
 
       realtime.start_async

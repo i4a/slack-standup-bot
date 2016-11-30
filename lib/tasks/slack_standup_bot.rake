@@ -10,6 +10,8 @@ namespace :slack_standup_bot do
 
     abort('Please provide a valid CHANNEL_ID or CHANNEL_NAME to start the Standup into') unless channel_id
 
+    ENV['RAKE_CALL'] = true
+    
     client = Standupbot::Client.new(channel_id)
 
     if client.valid?
