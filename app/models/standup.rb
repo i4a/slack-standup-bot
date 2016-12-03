@@ -32,7 +32,8 @@ class Standup < ActiveRecord::Base
 
   validates :user_id, :channel_id, presence: true
 
-  scope :for, -> user_id, channel_id { where(user_id: user_id, channel_id: channel_id) }
+  scope :for, ->(user_id, channel_id) { where(user_id: user_id, channel_id: channel_id) }
+  scope :for_channel, ->(channel) { where channel: channel }
   scope :today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
   scope :by_date, -> date { where(created_at: date.at_midnight..date.next_day.at_midnight) }
 
@@ -77,7 +78,7 @@ class Standup < ActiveRecord::Base
     end
 
     before_transition on: :skip do |standup, _|
-      standup.order= (standup.channel.today_standups.maximum(:order) + 1) || 1
+      standup.order = (standup.channel.today_standups.maximum(:order) + 1) || 1
     end
 
   end
@@ -99,16 +100,16 @@ class Standup < ActiveRecord::Base
     end
 
     # in seconds
-    def time_elapsed_in_todays_standup
-      today_ended_at - today_started_at
+    def time_elapsed_in_todays_standup(channel)
+      today_ended_at(channel) - today_started_at(channel)
     end
 
-    def today_started_at
-      today.first.try(:created_at)
+    def today_started_at(channel)
+      for_channel(channel).today.first.try(:created_at)
     end
 
-    def today_ended_at
-      today.last.try(:updated_at)
+    def today_ended_at(channel)
+      for_channel(channel).today.last.try(:updated_at)
     end
 
   end
