@@ -1,5 +1,5 @@
 %div{ style: 'font-size: 30px; text-align: center; margin-bottom: 30px;' }
-  = "Standup of #{Time.now.strftime('%A, %d %B, %Y').html_safe}"
+  = I18n.t('mailers.standup.today_report.title', date: Time.now.strftime('%A, %d %B, %Y').html_safe)
 
 %div{ style: 'max-width: 600px; margin: 0 auto;' }
   - @standups.each do |standup|
@@ -25,7 +25,7 @@
         - else
           .yesterday-section.section{ style: 'border-left: 3px solid #70aacf; border-bottom: 1px solid #ddd; padding: 15px;' }
             %h2{ style: 'font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 0; padding-top: 7px; width: 280px;' }
-              What I worked on yesterday:
+              = I18n.t('mailers.standup.today_report.question_1')
             %ul{ style: 'margin-top: 0; margin-bottom: 10px' }
               - if standup.yesterday.present?
                 - standup.yesterday.split(/\n/).each do |text|
@@ -33,7 +33,7 @@
 
           .today-section.section{ style: 'border-left: 3px solid #86cf70; border-bottom: 1px solid #ddd; padding: 15px;' }
             %h2{ style: 'font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 0; padding-top: 7px; width: 280px;' }
-              What I am working on today:
+              = I18n.t('mailers.standup.today_report.question_2')
             %ul{ style: 'margin-top: 0; margin-bottom: 10px' }
               - if standup.today.present?
                 - standup.today.split(/\n/).each do |text|
@@ -41,9 +41,8 @@
 
           .blocks-section.section{ style: 'border-left: 3px solid #cf7070; border-bottom: 1px solid #ddd; padding: 15px;' }
             %h2{ style: 'font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 0; padding-top: 7px; width: 280px;' }
-              What is in my way:
+              = I18n.t('mailers.standup.today_report.question_3')
             %ul{ style: 'margin-top: 0; margin-bottom: 10px' }
               - if standup.conflicts.present?
                 - standup.conflicts.split(/\n/).each do |text|
                   %li= emojify(text)
-

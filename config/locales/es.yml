@@ -58,3 +58,11 @@ es:
   settings:
     index:
       success: Ajustes guardados correctamente.
+
+  mailers:
+    standup:
+      today_report:
+        title: "Standup del %{date}"
+        question_1: "En qué trabajé ayer / el viernes:"
+        question_2: "En qué voy a trabajar hoy:"
+        question_3: "Qué se me interpone en el camino / De quién necesito algo:"

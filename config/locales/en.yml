@@ -58,3 +58,11 @@ en:
   settings:
     index:
       success: Your settings were saved correctly.
+
+  mailers:
+    standup:
+      today_report:
+        title: "Standup of %{date}"
+        question_1: "What I worked on yesterday:"
+        question_2: "What I am working on today:"
+        question_3: "What is in my way:"
