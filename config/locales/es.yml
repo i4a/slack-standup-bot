@@ -3,7 +3,7 @@ es:
     standup_completed: Standup de hoy concluído.
     standup_started: Standup comenzado!
     standup_welcome: Bienvenido al standup de hoy! Escribe "-Start" para comenzar.
-    standup_back_online: 'Standup is up again!!! Here you have the previous status of the standup:'
+    standup_back_online: 'Standup de nuevo en marcha!!! Este es el estado del standup:'
 
     welcome: Buenos días <@%{user}>, Bienvenido al standup de hoy! Estás listo para empezar? ('-yes', or '-skip')
     bot_died: "<!here|here> Españoles, :robot_face: ha muerto. Por favor lanza el standup de nuevo para continuar con el comando /standup."

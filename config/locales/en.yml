@@ -3,7 +3,7 @@ en:
     standup_completed: Today's standup is already completed.
     standup_started: Standup has started.
     standup_welcome: Welcome to standup! Type "-Start" to get started.
-    standup_back_online: 'Standup de nuevo en marcha!!! Este es el estado del standup:'
+    standup_back_online: 'Standup is up again!!! Here you have the previous status of the standup:'
 
     welcome: Good morning <@%{user}>, Welcome to daily standup! Are you ready to begin? ('-yes', or '-skip')
     bot_died: "<!here|here> The bot was killed by someone :sob:, please restart the standup to continue."
