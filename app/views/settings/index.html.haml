@@ -31,5 +31,10 @@
       = f.label "Auto Skip Timeout"
       = f.select :auto_skip_timeout, [ 1, 2, 4, 6, 8, 10 ], {}, { class: 'form-control' }
 
+    %legend Skip weekends (for scheduled Rake task)
+    .form-group
+      = f.label "Skip Weekends"
+      = f.check_box :skip_weekends, class: 'form-control' 
+
   .form-group
     = f.submit class: "btn btn-default"

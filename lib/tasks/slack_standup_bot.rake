@@ -16,7 +16,9 @@ namespace :slack_standup_bot do
       channel_id: channel_id
     }
 
-    start_url = "#{setting.web_url}/api/standups/start?#{params.to_query}"
-    `curl #{start_url}`
+    unless setting.skip_today? 
+      start_url = "#{setting.web_url}/api/standups/start?#{params.to_query}"
+      `curl #{start_url}`
+    end
   end
 end

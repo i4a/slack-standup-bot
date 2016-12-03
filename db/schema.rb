@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122171136) do
+ActiveRecord::Schema.define(version: 20161203182032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160122171136) do
     t.string  "web_url"
     t.string  "api_token"
     t.integer "auto_skip_timeout", default: 2
+    t.boolean "skip_weekends",     default: true
   end
 
   create_table "standups", force: :cascade do |t|
