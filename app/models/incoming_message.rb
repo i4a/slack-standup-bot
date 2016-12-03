@@ -78,7 +78,7 @@ class IncomingMessage
 
   def complete_standup
     url = Rails.application.routes.url_helpers.channel_standups_url(channel_id: channel.id, host: settings.web_url)
-    minutes_elapsed = Standup.time_elapsed_in_todays_standup / 60
+    minutes_elapsed = (Standup.time_elapsed_in_todays_standup(channel) / 60).round(1)
 
     StandupMailer.today_report(channel.id).deliver_later
 
