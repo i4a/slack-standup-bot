@@ -1,0 +1,37 @@
+fr:
+  incoming_message:
+    standup_completed: Aujourd'hui, le standup est déjà terminé.
+    standup_started: Le standup a commencé.
+    standup_welcome: Bienvenue au standup ! Veuillez saisir "-start" pour commencer.
+
+    welcome: Bonjour <@%{user}>, Bienvenue au standup quotidien ! Êtes-vous prêt à commencer ? ('-yes', ou '-skip')
+    bot_died: "<!here|here> Le bot a été arrêté par quelqu'un :sob:, merci de redémarrer le standup pour continuer."
+
+    skip: <@%{user}>, Je reviendrai vers vous à la fin du standup.
+    not_available: <@%{user}> n'est pas disponible.
+
+    answer_saved: Votre réponse a bien été enregistrée.
+
+    wait_your_turn: <@%{user}> Merci d'attendre votre tour ou la fin du standup.
+    already_submitted: Vous avez déjà soumis un standup pour aujourd'hui, Merci ! <@%{user}>
+
+    help: |
+      Aide sur le Standup bot.
+           Commandes administrateur.
+                 • -start                                   Démarrer le Standup.
+                 • -vacation: @user          Ignorer les utilisateurs pour aujourd'hui.
+                 • -skip: @user                    Placer l'utilisateur à la fin du standup.
+                 • -n/a: @user                       Ignorer les utilisateurs pour aujourd'hui.
+                 • -quit-standup                 Quitter le standup.
+           Commandes utilisateur.
+                 • -yes                                       Démarrer votre Standup.
+                 • -skip                                     Passer à la fin du standup.
+                 • -edit: #(1,2,3)                  Editez vos réponses pour aujourd'hui.
+                 • -delete: #(1,2,3)             Supprimez vos réponses pour aujourd'hui.
+
+    quit: Quitter le Standup
+    resume: Merci pour ce standup. Le récapitulatif, est disponibile ici %{url}
+
+  settings:
+    index:
+      success: Vos paramètres ont été enregistrés correctement.

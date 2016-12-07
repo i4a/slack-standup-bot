@@ -1,0 +1,68 @@
+es:
+  incoming_message:
+    standup_completed: Standup de hoy concluído.
+    standup_started: Standup comenzado!
+    standup_welcome: Bienvenido al standup de hoy! Escribe "-Start" para comenzar.
+    standup_back_online: 'Standup de nuevo en marcha!!! Este es el estado del standup:'
+
+    welcome: Buenos días <@%{user}>, Bienvenido al standup de hoy! Estás listo para empezar? ('-yes', or '-skip')
+    bot_died: "<!here|here> Españoles, :robot_face: ha muerto. Por favor lanza el standup de nuevo para continuar con el comando /standup."
+
+    skip: <@%{user}>, te quedas el último, nos vemos al final del standup.
+    not_available: <@%{user}> no está disponible.
+
+    answer_saved: Respuesta guardada.
+
+    wait_your_turn: <@%{user}> Por favor, esperar tu turno o el final del standup.
+    already_submitted: Ya has participado en el standup de hoy, vaquero! <@%{user}>
+
+    help: |
+      HAYUDA del Standup-bot.
+           Admin Commands.
+                 • -start                                   Begin Standup.
+                 • -vacation: @user          Skip users standup for the day.
+                 • -skip: @user                    Place user at the end of standup.
+                 • -n/a: @user                       Skip users standup for the day.
+                 • -quit-standup                 Quit standup.
+           User Commands.
+                 • -yes                                       Begin your standup.
+                 • -skip                                     Skip your standup until the end of standup.
+                 • -edit: #(1,2,3)                  Edit your answer for the day.
+                 • -delete: #(1,2,3)             Delete your answer for the day.
+
+    quit: Saliendo del Standup
+    resume: Standup finalizado. Olé! Si quieres ver el resumen, visita %{url}
+    resume_time_great: ":partyparrot: ¡Sí! ¡Hoy hemos conseguido acabar en sólo *%{minutes} minutos*! ¡Buen trabajo! ¡Ahora a reventar la mañana!"
+    resume_time_to_improve: ":sleeping: Hoy hemos necesitado *%{minutes} minutos* para acabar el standup. ¿Sueño o resaca? ¡Podemos hacerlo mejor equipo!"
+    resume_time_winter_is_coming: ":booom: Hoy hemos necesitado *%{minutes} minutes* para acabar el standup. Sip. De verdad. :omg-panda: El próximo standup lo vamos a hacer DE PIE, a ver si así entendemos el concepto ... el lemur os vigila madafakas :darth_vader:"
+
+  standup:
+    question_1_monday: "1. ¿Qué hiciste ayer?"
+    question_1_not_monday: "1. ¿Qué hiciste el viernes?"
+    question_2: "2. ¿En qué vas a trabajar hoy?"
+    question_3: "3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
+    current_question_1_monday: "<@%{user}> 1. ¿Qué hiciste ayer?"
+    current_question_1_not_monday: "<@%{user}> 1. ¿Qué hiciste el viernes?"
+    current_question_2: "<@%{user}> 2. ¿En qué vas a trabajar hoy?"
+    current_question_3: "<@%{user}> 3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
+    status:
+      idle: "<@%{user}> esperado en la cola del standup."
+      active: "<@%{user}> tiene que responder aún si quiere participar en el standup."
+      answering_yesterday: "<@%{user}> está respondiendo qué hizo ayer."
+      answering_today: "<@%{user}> está respondiendo qué quiere hacer hoy."
+      answering_conflicts: "<@%{user}> está respondiendo si tiene bloqueos o necesita algo de alguien."
+      on_vacation: "<@%{user}> está de vacaciones."
+      not_available: "<@%{user}> hoy no está disponible."
+      done: "<@%{user}> ya ha respondido el standup de hoy."
+
+  settings:
+    index:
+      success: Ajustes guardados correctamente.
+
+  mailers:
+    standup:
+      today_report:
+        title: "Standup del %{date}"
+        question_1: "En qué trabajé ayer / el viernes:"
+        question_2: "En qué voy a trabajar hoy:"
+        question_3: "Qué se me interpone en el camino / De quién necesito algo:"

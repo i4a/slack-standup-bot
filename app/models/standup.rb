@@ -32,7 +32,8 @@ class Standup < ActiveRecord::Base
 
   validates :user_id, :channel_id, presence: true
 
-  scope :for, -> user_id, channel_id { where(user_id: user_id, channel_id: channel_id) }
+  scope :for, ->(user_id, channel_id) { where(user_id: user_id, channel_id: channel_id) }
+  scope :for_channel, ->(channel) { where channel: channel }
   scope :today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
   scope :by_date, -> date { where(created_at: date.at_midnight..date.next_day.at_midnight) }
 
@@ -77,7 +78,7 @@ class Standup < ActiveRecord::Base
     end
 
     before_transition on: :skip do |standup, _|
-      standup.order= (standup.channel.today_standups.maximum(:order) + 1) || 1
+      standup.order = (standup.channel.today_standups.maximum(:order) + 1) || 1
     end
 
   end
@@ -98,6 +99,19 @@ class Standup < ActiveRecord::Base
       standup
     end
 
+    # in seconds
+    def time_elapsed_in_todays_standup(channel)
+      today_ended_at(channel) - today_started_at(channel)
+    end
+
+    def today_started_at(channel)
+      for_channel(channel).today.first.try(:created_at)
+    end
+
+    def today_ended_at(channel)
+      for_channel(channel).today.last.try(:updated_at)
+    end
+
   end
 
   # @return [Boolean]
@@ -112,21 +126,21 @@ class Standup < ActiveRecord::Base
 
   def question_for_number(number)
     case number
-    when 1 then Time.now.wday == 4 ? "1. What did you do on Friday?" : "1. What did you do yesterday?"
-    when 2 then "2. What are you working on today?"
-    when 3 then "3. Is there anything standing in your way?"
+    when 1 then Time.now.wday == 1 ? I18n.t('standup.question_1_monday') : I18n.t('standup.question_1_not_monday')
+    when 2 then I18n.t('standup.question_2')
+    when 3 then I18n.t('standup.question_3')
     end
   end
 
   def current_question
+    user = self.user.slack_id
+
     if self.yesterday.nil?
-      Time.now.wday == 1 ? "<@#{self.user.slack_id}> 1. What did you do on Friday?" : "<@#{self.user.slack_id}> 1. What did you do yesterday?"
-
+      Time.now.wday == 1 ? I18n.t('standup.current_question_1_monday', user: user) : I18n.t('standup.current_question_1_not_monday', user: user)
     elsif self.today.nil?
-      "<@#{self.user.slack_id}> 2. What are you working on today?"
-
+      I18n.t('standup.current_question_2', user: user)
     elsif self.conflicts.nil?
-      "<@#{self.user.slack_id}> 3. Is there anything standing in your way?"
+      I18n.t('standup.current_question_3', user: user)
     end
   end
 
@@ -163,25 +177,27 @@ class Standup < ActiveRecord::Base
   #
   # @return [String]
   def status
+    user = self.user.slack_id
+
     if idle?
-      "<@#{self.user.slack_id}> is in the queue waiting to do the standup."
+      I18n.t('standup.status.idle', user: user)
     elsif active?
-      "<@#{self.user.slack_id}> needs to answer if wants to do the standup."
+      I18n.t('standup.status.active', user: user)
     elsif answering?
       if yesterday.nil?
-        "<@#{self.user.slack_id}> is answering what did yesterday."
+        I18n.t('standup.status.answering_yesterday', user: user)
       elsif today.nil?
-        "<@#{self.user.slack_id}> is answering what's planning to do today."
+        I18n.t('standup.status.answering_today', user: user)
       else
-        "<@#{self.user.slack_id}> is answering if has any conflicts."
+        I18n.t('standup.status.answering_conflicts', user: user)
       end
     elsif completed?
       if vacation?
-        "<@#{self.user.slack_id}> is on vacation."
+        I18n.t('standup.status.on_vacation', user: user)
       elsif not_available?
-        "<@#{self.user.slack_id}> is not available."
+        I18n.t('standup.status.not_available', user: user)
       else
-        "<@#{self.user.slack_id}> already did the standup."
+        I18n.t('standup.status.done', user: user)
       end
     end
   end

@@ -3,6 +3,7 @@ en:
     standup_completed: Today's standup is already completed.
     standup_started: Standup has started.
     standup_welcome: Welcome to standup! Type "-Start" to get started.
+    standup_back_online: 'Standup is up again!!! Here you have the previous status of the standup:'
 
     welcome: Good morning <@%{user}>, Welcome to daily standup! Are you ready to begin? ('-yes', or '-skip')
     bot_died: "<!here|here> The bot was killed by someone :sob:, please restart the standup to continue."
@@ -31,7 +32,37 @@ en:
 
     quit: Quiting Standup
     resume: That concludes our standup. For a recap visit %{url}
+    resume_time_great: ":partyparrot: Yes! Only *%{minutes} minutes* to finish the standup today. Well done!"
+    resume_time_to_improve: ":sleeping: Today we took *%{minutes} minutes* to finish the standup. We can do better people!"
+    resume_time_winter_is_coming: ":booom: Today we needed *%{minutes} minutes* to finish the standup. Yes. True shit. :omg-panda: Next time we are doing this standup meeting actually STANDING UP, so we understand the concept. I'm watching you madafakas :darth_vader:"
+
+  standup:
+    question_1_monday: "1. What did you do yesterday?"
+    question_1_not_monday: "1. What did you do on Friday?"
+    question_2: "2. What are you working on today?"
+    question_3: "3. Is there anything standing in your way?"
+    current_question_1_monday: "<@%{user}> 1. What did you do yesterday?"
+    current_question_1_not_monday: "<@%{user}> 1. What did you do on Friday?"
+    current_question_2: "<@%{user}> 2. What are you working on today?"
+    current_question_3: "<@%{user}> 3. Is there anything standing in your way?"
+    status:
+      idle: "<@%{user}> is in the queue waiting to do the standup."
+      active: "<@%{user}> needs to answer if wants to do the standup."
+      answering_yesterday: "<@%{user}> is answering what did yesterday."
+      answering_today: "<@%{user}> is answering what's planning to do today."
+      answering_conflicts: "<@%{user}> is answering if has any conflicts."
+      on_vacation: "<@%{user}> is on vacation."
+      not_available: "<@%{user}> is not available."
+      done: "<@%{user}> already did the standup."
 
   settings:
     index:
       success: Your settings were saved correctly.
+
+  mailers:
+    standup:
+      today_report:
+        title: "Standup of %{date}"
+        question_1: "What I worked on yesterday:"
+        question_2: "What I am working on today:"
+        question_3: "What is in my way:"
