@@ -17,7 +17,7 @@ class IncomingMessage
         if @standup.completed?
           channel.message('Good Luck Today!')
         else
-          channel.message(@standup.current_question)
+          channel.message(@standup.current_question || ':robot_face: is :confused: ... not current_question and standup is not completed ... please someone call :construction_worker::skin-tone-4:')
         end
       end
     end

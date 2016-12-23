@@ -133,13 +133,13 @@ class Standup < ActiveRecord::Base
   end
 
   def current_question
-    user = self.user.slack_id
+    user = user.slack_id
 
-    if self.yesterday.nil?
+    if yesterday.nil?
       Time.now.wday == 1 ? I18n.t('standup.current_question_1_monday', user: user) : I18n.t('standup.current_question_1_not_monday', user: user)
-    elsif self.today.nil?
+    elsif today.nil?
       I18n.t('standup.current_question_2', user: user)
-    elsif self.conflicts.nil?
+    elsif conflicts.nil?
       I18n.t('standup.current_question_3', user: user)
     end
   end
