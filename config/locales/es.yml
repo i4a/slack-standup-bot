@@ -37,8 +37,8 @@ es:
     resume_time_winter_is_coming: ":booom: Hoy hemos necesitado *%{minutes} minutes* para acabar el standup. Sip. De verdad. :omg-panda: El próximo standup lo vamos a hacer DE PIE, a ver si así entendemos el concepto ... el lemur os vigila madafakas :darth_vader:"
 
   standup:
-    question_1_monday: "1. ¿Qué hiciste ayer?"
-    question_1_not_monday: "1. ¿Qué hiciste el viernes?"
+    question_1_monday: "1. ¿Qué hiciste el viernes?"
+    question_1_not_monday: "1. ¿Qué hiciste ayer?"
     question_2: "2. ¿En qué vas a trabajar hoy?"
     question_3: "3. ¿Algo en tu camino? ¿Necesitas ayuda de alguien?"
     current_question_1_monday: "<@%{user}> 1. ¿Qué hiciste ayer?"

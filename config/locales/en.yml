@@ -37,8 +37,8 @@ en:
     resume_time_winter_is_coming: ":booom: Today we needed *%{minutes} minutes* to finish the standup. Yes. True shit. :omg-panda: Next time we are doing this standup meeting actually STANDING UP, so we understand the concept. I'm watching you madafakas :darth_vader:"
 
   standup:
-    question_1_monday: "1. What did you do yesterday?"
-    question_1_not_monday: "1. What did you do on Friday?"
+    question_1_monday: "1. What did you do on Friday?"
+    question_1_not_monday: "1. What did you do yesterday?"
     question_2: "2. What are you working on today?"
     question_3: "3. Is there anything standing in your way?"
     current_question_1_monday: "<@%{user}> 1. What did you do yesterday?"
