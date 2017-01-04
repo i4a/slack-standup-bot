@@ -9,21 +9,21 @@ class IncomingMessage
       if @standup.active?
         @standup.skip!
 
-        channel.message(I18n.t('incoming_message.skip', user: @standup.user_slack_id))
+        channel.message(I18n.t('incoming_message.skip.skip', user: @standup.user_slack_id))
       end
     end
 
     def validate!
       if !user.admin?
-        raise InvalidCommandError.new("You don't have permission to skip this user.")
+        raise InvalidCommandError.new(I18n.t('incoming_message.skip.not_allowed'))
       elsif @standup.idle?
-        raise InvalidCommandError.new("You need to wait until <@#{reffered_user.slack_id}> turns.")
+        raise InvalidCommandError.new(I18n.t('incoming_message.skip.need_to_wait', user: reffered_user.slack_id))
       elsif @standup.completed?
-        raise InvalidCommandError.new("<@#{reffered_user.slack_id}> has already completed standup today.")
+        raise InvalidCommandError.new(I18n.t('incoming_message.skip.already_completed', user: reffered_user.slack_id))
       elsif @standup.answering?
-        raise InvalidCommandError.new("<@#{reffered_user.slack_id}> is doing his/her standup.")
+        raise InvalidCommandError.new(I18n.t('incoming_message.skip.other_answering', user: reffered_user.slack_id))
       elsif channel.today_standups.pending.empty?
-        raise InvalidCommandError.new("The standup can not be skipped because is the last one in the stack.")
+        raise InvalidCommandError.new(I18n.t('incoming_message.skip.last_man_answering'))
       end
 
       super

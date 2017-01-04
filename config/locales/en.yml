@@ -8,7 +8,14 @@ en:
     welcome: Good morning <@%{user}>, Welcome to daily standup! Are you ready to begin? ('-yes', or '-skip')
     bot_died: "<!here|here> The bot was killed by someone :sob:, please restart the standup to continue."
 
-    skip: <@%{user}>, I'll get back to you at the end of standup.
+    skip:
+      skip: <@%{user}>, I'll get back to you at the end of standup.
+      not_allowed: "You don't have permission to skip this user."
+      need_to_wait: "You need to wait until <@%{user}> turns."
+      already_completed: "<@#{user}> has already completed standup today."
+      other_answering: "<@#{user}> is doing his/her standup."
+      last_man_answering: "The standup can not be skipped because is the last one in the stack."
+
     not_available: <@%{user}> is not available.
 
     answer_saved: Your answer has been saved.
