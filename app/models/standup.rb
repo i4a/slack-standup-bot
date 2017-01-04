@@ -133,14 +133,12 @@ class Standup < ActiveRecord::Base
   end
 
   def current_question
-    user = user.slack_id
-
     if yesterday.nil?
-      Time.now.wday == 1 ? I18n.t('standup.current_question_1_monday', user: user) : I18n.t('standup.current_question_1_not_monday', user: user)
+      Time.now.wday == 1 ? I18n.t('standup.current_question_1_monday', user: user_slack_id) : I18n.t('standup.current_question_1_not_monday', user: user_slack_id)
     elsif today.nil?
-      I18n.t('standup.current_question_2', user: user)
+      I18n.t('standup.current_question_2', user: user_slack_id)
     elsif conflicts.nil?
-      I18n.t('standup.current_question_3', user: user)
+      I18n.t('standup.current_question_3', user: user_slack_id)
     end
   end
 
@@ -177,27 +175,25 @@ class Standup < ActiveRecord::Base
   #
   # @return [String]
   def status
-    user = self.user.slack_id
-
     if idle?
-      I18n.t('standup.status.idle', user: user)
+      I18n.t('standup.status.idle', user: user_slack_id)
     elsif active?
-      I18n.t('standup.status.active', user: user)
+      I18n.t('standup.status.active', user: user_slack_id)
     elsif answering?
       if yesterday.nil?
-        I18n.t('standup.status.answering_yesterday', user: user)
+        I18n.t('standup.status.answering_yesterday', user: user_slack_id)
       elsif today.nil?
-        I18n.t('standup.status.answering_today', user: user)
+        I18n.t('standup.status.answering_today', user: user_slack_id)
       else
-        I18n.t('standup.status.answering_conflicts', user: user)
+        I18n.t('standup.status.answering_conflicts', user: user_slack_id)
       end
     elsif completed?
       if vacation?
-        I18n.t('standup.status.on_vacation', user: user)
+        I18n.t('standup.status.on_vacation', user: user_slack_id)
       elsif not_available?
-        I18n.t('standup.status.not_available', user: user)
+        I18n.t('standup.status.not_available', user: user_slack_id)
       else
-        I18n.t('standup.status.done', user: user)
+        I18n.t('standup.status.done', user: user_slack_id)
       end
     end
   end
