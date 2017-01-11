@@ -44,6 +44,8 @@ gem 'delayed_job_active_record'
 
 gem 'annotate'
 
+gem 'rollbar'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -62,4 +64,3 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
 end
-
